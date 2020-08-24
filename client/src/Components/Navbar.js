@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       <MenuIcon />
     </IconButton>
     <Typography variant="h6" className={classes.title}>
-      News
+      Covid-19 Tracker
     </Typography>
     <Button color="inherit">Login</Button>
     <Button color="inherit">Register</Button>
