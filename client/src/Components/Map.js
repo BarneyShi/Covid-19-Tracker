@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import '../stylesheets/mapbox.css'
 
 const HtmlTooltip = withStyles((theme) => ({
   tooltip: {
@@ -120,7 +121,7 @@ class Map extends Component {
                             {/* <Typography color="inherit">
                         Tooltip with HTML
                       </Typography> */}
-                            <img
+                            <img alt={e.country}
                               style={{ width: "25px" }}
                               src={e.countryInfo.flag}
                             />

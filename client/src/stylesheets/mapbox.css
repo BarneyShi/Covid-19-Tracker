@@ -1,0 +1,4 @@
+#canvas > :nth-child(1) {
+    max-width: stretch;
+    width: initial;
+}
