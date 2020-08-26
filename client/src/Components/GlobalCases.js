@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import axios from "axios";
+import CaseTable from "./CastTable";
 
 const Globalcases = () => {
   const [cases, setCases] = useState(0);
@@ -20,6 +21,7 @@ const Globalcases = () => {
       <Typography style={{ color: "red" }} variant="h4">
         {cases}
       </Typography>
+      <CaseTable />
     </Fragment>
   );
 };

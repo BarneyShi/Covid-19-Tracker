@@ -10,13 +10,13 @@ const App = () => {
       <Navbar />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-2">
+          <div className="col-md-3">
             <Globalcases />
           </div>
-          <div id='canvas' className="col-md-8">
+          <div id='canvas' className="col-md-6">
             <Map />
           </div>
-          <div className='col-md-2'>
+          <div className='col-md-3'>
             <GlobalDeaths />
           </div>
         </div>
