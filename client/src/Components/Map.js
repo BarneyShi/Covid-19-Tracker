@@ -34,7 +34,7 @@ class Map extends Component {
         width: 800,
         height: 800,
         latitude: 25.355,
-        longitude: -1,
+        longitude: 20,
         zoom: 1.5,
       },
       data: null,

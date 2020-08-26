@@ -1,4 +1,3 @@
 #canvas > :nth-child(1) {
-    max-width: stretch;
-    width: initial;
+    width: -webkit-fill-available !important;
 }
