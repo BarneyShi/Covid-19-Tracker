@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, makeStyles } from "@material-ui/core";
 import axios from "axios";
 import CaseTable from "./CastTable";
 
@@ -13,12 +13,25 @@ const Globalcases = () => {
     };
     temp();
   }, []);
+
+  //custome style
+  const useStyles = makeStyles({
+    h5: {
+      fontWeight:"bold"
+    },
+    h4: {
+      color: "red"
+    }
+  })
+  const classes = useStyles();
+  //============================
+  
   return (
     <Fragment>
-      <Typography style={{ fontWeight: "bold" }} variant="h5">
+      <Typography className={classes.h5} variant="h5">
         Active Cases
       </Typography>
-      <Typography style={{ color: "red" }} variant="h4">
+      <Typography className={classes.h4} variant="h4">
         {cases}
       </Typography>
       <CaseTable />

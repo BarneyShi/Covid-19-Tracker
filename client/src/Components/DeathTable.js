@@ -9,13 +9,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core';
 
-const CaseTable = () => {
+const DeathTable = () => {
     const [cases, setCase] = useState(0);
     useEffect(()=>{
         const fetch = async () => {
             const nums = await(axios.get("https://disease.sh/v3/covid-19/countries"));
             nums.data.sort((a,b) => {
-              return b.active - a.active
+              return b.deaths - a.deaths
             })
             setCase(nums.data);
         }
@@ -34,7 +34,7 @@ const CaseTable = () => {
           <TableHead>
             <TableRow>
               <TableCell>Country/Region</TableCell>
-              <TableCell align="right">Active Cases</TableCell>
+              <TableCell align="right">Death Cases</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -43,7 +43,7 @@ const CaseTable = () => {
                 <TableCell component="th" scope="row">
                   {row.country}
                 </TableCell>
-                <TableCell align="right">{row.active}</TableCell>
+                <TableCell align="right">{row.deaths}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -52,4 +52,4 @@ const CaseTable = () => {
     )
 }
 
-export default CaseTable;
+export default DeathTable;

@@ -1,7 +1,12 @@
-import React, { Component } from "react";
-import {AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Button,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,27 +17,37 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textAlign: "center",
   },
 }));
- const Navbar = () => {
-    const classes = useStyles();
+const Navbar = () => {
+  const classes = useStyles();
 
-    return (
-      <div>
-        <AppBar position="static">
-  <Toolbar>
-    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-      <MenuIcon />
-    </IconButton>
-    <Typography variant="h6" className={classes.title}>
-      Covid-19 Tracker
-    </Typography>
-    <Button color="inherit">Login</Button>
-    <Button color="inherit">Register</Button>
-  </Toolbar>
-</AppBar>
-      </div>
-    );
-}
+  return (
+    <div>
+      <AppBar className={classes.appbar} position="static">
+        <Toolbar>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <img src="mask.png" alt="mask-male" />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Covid-19 Tracker
+          </Typography>
+          <IconButton
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <img src="mask-2.png" alt="mask-female" />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
 
 export default Navbar;
