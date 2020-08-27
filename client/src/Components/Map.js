@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import axios from "axios";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import Button from "@material-ui/core/Button";
-import '../stylesheets/mapbox.css'
+import "../stylesheets/mapbox.css";
+import { Typography, Grid } from "@material-ui/core";
 
 const HtmlTooltip = withStyles((theme) => ({
   tooltip: {
@@ -23,6 +24,12 @@ const styles = (theme) => ({
   root: {
     minWidth: 0,
   },
+  body1: {
+    // borderBottom: "1px solid grey",
+    paddingBottom: "3px",
+    fontWeight: 500,
+    padding: 0,
+  },
 });
 
 class Map extends Component {
@@ -31,7 +38,7 @@ class Map extends Component {
     this.state = {
       viewport: {
         width: 800,
-        height: 800,
+        height: 780,
         latitude: 25.355,
         longitude: 20,
         zoom: 1.5,
@@ -96,50 +103,107 @@ class Map extends Component {
         };
       }
     };
-    const onHover = (e) => {
-      console.log(e.country);
-    };
     const { classes } = this.props;
     return (
-          <ReactMapGL
-            {...this.state.viewport}
-            onViewportChange={(viewport) => this.setState({ viewport })}
-            mapboxApiAccessToken="pk.eyJ1IjoiaWR1bm5vY29kaW5nOTUiLCJhIjoiY2tlMTFiMDh4NDF4cTJ5bWgxbDUxb2M5ciJ9.-L_x_0HZGSXFMRdactrn-Q"
-          >
-            {this.state.data
-              ? this.state.data.map((e, i) => {
-                  return (
-                    <Marker
-                      latitude={e.countryInfo.lat}
-                      longitude={e.countryInfo.long}
-                      key={i}
-                    >
-                      <HtmlTooltip
-                        title={
-                          <React.Fragment>
-                            {/* <Typography color="inherit">
-                        Tooltip with HTML
-                      </Typography> */}
-                            <img alt={e.country}
-                              style={{ width: "25px" }}
-                              src={e.countryInfo.flag}
-                            />
-                          </React.Fragment>
-                        }
-                      >
-                        <Button className={`${classes.text} ${classes.root}`}>
-                          {" "}
-                          <div
-                            onMouseOver={() => onHover(e)}
-                            style={scaleCirle(e.active)}
-                          ></div>
-                        </Button>
-                      </HtmlTooltip>
-                    </Marker>
-                  );
-                })
-              : null}
-          </ReactMapGL>
+      <ReactMapGL
+        {...this.state.viewport}
+        onViewportChange={(viewport) => this.setState({ viewport })}
+        mapboxApiAccessToken="pk.eyJ1IjoiaWR1bm5vY29kaW5nOTUiLCJhIjoiY2tlMTFiMDh4NDF4cTJ5bWgxbDUxb2M5ciJ9.-L_x_0HZGSXFMRdactrn-Q"
+      >
+        {this.state.data
+          ? this.state.data.map((e, i) => {
+              return (
+                <Marker
+                  latitude={e.countryInfo.lat}
+                  longitude={e.countryInfo.long}
+                  key={i}
+                >
+                  <HtmlTooltip
+                    title={
+                      <React.Fragment>
+                        <Grid container justify="center">
+                          <img
+                            alt={e.country}
+                            style={{ width: "35px", display: "block" }}
+                            src={e.countryInfo.flag}
+                          />
+                        </Grid>
+
+                        <Grid container justify="space-between">
+                          <Typography variant="body2" display="inline">
+                            Country: &nbsp;{" "}
+                          </Typography>
+                          <Typography
+                            className={classes.body1}
+                            variant="body1"
+                            display="inline"
+                          >
+                            {e.country}
+                          </Typography>
+                        </Grid>
+
+                        <hr style={{ margin: "5px 0px" }} />
+
+                        <Grid container justify="space-between">
+                          <Typography
+                            variant="body2"
+                            display="inline"
+                            align="left"
+                          >
+                            Cases: &nbsp;{" "}
+                          </Typography>
+                          <Typography
+                            className={classes.body1}
+                            display="inline"
+                            variant="body1"
+                            align="right"
+                          >
+                            {e.cases}
+                          </Typography>
+                        </Grid>
+
+                        <hr style={{ margin: "5px 0px" }} />
+
+                        <Grid container justify="space-between">
+                          <Typography variant="body2" display="inline">
+                            Active: &nbsp;{" "}
+                          </Typography>
+                          <Typography
+                            className={classes.body1}
+                            display="inline"
+                            variant="body1"
+                          >
+                            {e.active}
+                          </Typography>
+                        </Grid>
+
+                        <hr style={{ margin: "5px 0px" }} />
+
+                        <Grid container justify="space-between">
+                          <Typography variant="body2" display="inline">
+                            Deaths: &nbsp;{" "}
+                          </Typography>
+                          <Typography
+                            className={classes.body1}
+                            display="inline"
+                            variant="body1"
+                          >
+                            {e.deaths}
+                          </Typography>
+                        </Grid>
+                      </React.Fragment>
+                    }
+                  >
+                    <Button className={`${classes.text} ${classes.root}`}>
+                      {" "}
+                      <div style={scaleCirle(e.active)}></div>
+                    </Button>
+                  </HtmlTooltip>
+                </Marker>
+              );
+            })
+          : null}
+      </ReactMapGL>
     );
   }
 }

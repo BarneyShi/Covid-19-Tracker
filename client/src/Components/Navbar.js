@@ -33,7 +33,7 @@ const Navbar = () => {
           >
             <img src="mask.png" alt="mask-male" />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
             Covid-19 Tracker
           </Typography>
           <IconButton

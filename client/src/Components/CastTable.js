@@ -24,7 +24,7 @@ const CaseTable = () => {
   //custome table styles
   const useStyles = makeStyles({
     root: {
-      height: "720px",
+      height: "715px",
     },
     tabelcell: {
       fontWeight: 500,
